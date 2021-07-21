@@ -109,6 +109,10 @@ export class ResistorService {
     return Array.from(this.sigDigLookupTable.keys())
   }
 
+  get significantDigitsObject() {
+    return Object.fromEntries(this.sigDigLookupTable)
+  }
+
   setMultiplierFromColor(color: string) {
     if (!this.mulLookupTable.has(color)) throw new Error('Not a valid color')
 
@@ -127,6 +131,23 @@ export class ResistorService {
     return Array.from(this.mulLookupTable.keys())
   }
 
+  get multipliersObject() {
+    return {
+      'x1': 'black',
+      'x10': 'brown',
+      'x100': 'red',
+      'x1K': 'orange',
+      'x10K': 'yellow',
+      'x100K': 'green',
+      'x1M': 'blue',
+      'x10M': 'violet',
+      'x100M': 'grey',
+      'x1G': 'white',
+      'x0.1': 'gold',
+      'x0.01': 'silver'
+    }
+  }
+
   setToleranceFromColor(color: string) {
     if (!this.tolLookupTable.has(color)) throw new Error('Not a valid color')
 
@@ -143,6 +164,20 @@ export class ResistorService {
 
   get toleranceColors(): string[] {
     return Array.from(this.tolLookupTable.keys())
+  }
+
+  get tolerancesObject() {
+    return {
+      '1%': 'brown',
+      '2%': 'red',
+      '0.5%': 'green',
+      '0.25%': 'blue',
+      '0.1%': 'violet',
+      '0.05%': 'grey',
+      '5%': 'gold',
+      '10%': 'silver',
+      '20%': 'none',
+    }
   }
 
   get ohms(): string {
