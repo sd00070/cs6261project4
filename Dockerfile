@@ -10,4 +10,4 @@ RUN npm i -g \
 
 COPY container_directive.sh /container_directive.sh
 
-CMD ["/bin/bash", "/container_directive.sh"]
+CMD ["/container_directive.sh"]
