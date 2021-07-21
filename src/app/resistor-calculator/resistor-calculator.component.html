@@ -15,23 +15,28 @@
       <tr>
         <td>
           <select name="first-digit" id="first-digit-select" class="significant-digit">
-            <option value="8">grey</option>
+            <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
+              {{digitPair.key}}</option>
           </select>
           <select name="second-digit" id="second-digit-select" class="significant-digit">
-            <option value="6">blue</option>
+            <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
+              {{digitPair.key}}</option>
           </select>
           <select name="third-digit" id="third-digit-select" class="significant-digit">
-            <option value="5">green</option>
+            <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
+              {{digitPair.key}}</option>
           </select>
         </td>
         <td>
-          <select name="fourth-digit" id="fourth-digit-select">
-            <option value="M">x1M</option>
+          <select name="multiplier-select" id="multiplier-select">
+            <option *ngFor="let multiplierPair of multipliersObject | keyvalue" [value]="multiplierPair.value">
+              {{multiplierPair.key}}</option>
           </select>
         </td>
         <td>
-          <select name="fifth-digit" id="fifth-digit-select">
-            <option value="0.1">0.1%</option>
+          <select name="tolerance-select" id="tolerance-select">
+            <option *ngFor="let tolerancePair of tolerancesObject | keyvalue" [value]="tolerancePair.value">
+              {{tolerancePair.key}}</option>
           </select>
         </td>
       </tr>
