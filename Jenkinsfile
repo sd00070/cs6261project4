@@ -14,6 +14,7 @@ pipeline {
         }
         stage('e2e') {
             steps {
+                sh 'docker system prune --all'
                 sh 'docker build --tag testimage .'
                 sh 'docker run -d -v $WORKSPACE:/app -p 4200:4200 --name testcontainer testimage'
                 sh '$WORKSPACE/node_modules/protractor/webdriver-manager update'
