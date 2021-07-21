@@ -14,7 +14,10 @@ pipeline {
         }
         stage('e2e') {
             steps {
-                echo 'e2e stage not implemented'
+                sh 'docker build --tag testimage .'
+                sh 'docker run -d -v $WORKSPACE:/app -p 4200:4200 --name testcontainer testimage'
+                sh '$WORKSPACE/node_modules/protractor/webdriver-manager update'
+                sh 'ng e2e --devServerTarget='
             }
         }
         stage('deploy') {
