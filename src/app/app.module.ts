@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ResistorCalculatorComponent } from './resistor-calculator/resistor-calculator.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ResistorCalculatorComponent
   ],
   imports: [
     BrowserModule,

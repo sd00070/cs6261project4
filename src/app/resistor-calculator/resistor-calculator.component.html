@@ -1,0 +1,40 @@
+<section>
+  <h2>Resistance: {{ohms}}{{multiplier}} +/- {{tolerance}}%</h2>
+
+  <p>Select bands</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Digits</th>
+        <th>Multiplier</th>
+        <th>Tolerance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <select name="first-digit" id="first-digit-select" class="significant-digit">
+            <option value="8">grey</option>
+          </select>
+          <select name="second-digit" id="second-digit-select" class="significant-digit">
+            <option value="6">blue</option>
+          </select>
+          <select name="third-digit" id="third-digit-select" class="significant-digit">
+            <option value="5">green</option>
+          </select>
+        </td>
+        <td>
+          <select name="fourth-digit" id="fourth-digit-select">
+            <option value="M">x1M</option>
+          </select>
+        </td>
+        <td>
+          <select name="fifth-digit" id="fifth-digit-select">
+            <option value="0.1">0.1%</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
