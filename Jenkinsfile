@@ -14,11 +14,13 @@ pipeline {
         }
         stage('e2e') {
             steps {
-                sh 'ng e2e'
+                echo 'e2e stage not implemented'
             }
         }
         stage('deploy') {
-            echo 'Deploy stage not implemented'
+            steps {
+                echo 'Deploy stage not implemented'
+            }
         }
     }
 }
