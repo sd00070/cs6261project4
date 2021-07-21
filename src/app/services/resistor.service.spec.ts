@@ -23,8 +23,8 @@ describe('ResistorService', () => {
     expect(resistorService.multiplier).toEqual(0)
   })
 
-  it('should start with tolerance of 0', () => {
-    expect(resistorService.tolerance).toEqual(0)
+  it('should start with tolerance of 20', () => {
+    expect(resistorService.tolerance).toEqual(20)
   })
 
   it('should start with 0 ohms', () => {

@@ -52,7 +52,7 @@ export class ResistorService {
   constructor() {
     this._significantDigits = ['0', '0', '0']
     this._multiplier = 0
-    this._tolerance = 0
+    this._tolerance = 20
   }
 
   private setSignificantDigitFromColor(pos: number, color: string) {
