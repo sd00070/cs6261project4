@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResistorCalculatorComponent implements OnInit {
 
-  public ohms = 865
-  public multiplier = 'M'
+  public ohms: string = '865M'
   public tolerance = 0.1
 
   constructor() { }
