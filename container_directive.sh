@@ -1,4 +1,4 @@
 #!/bin/bash
 ng build ./
 
-http-server -p 4200 ./dist/cs6261project4/
+http-server ./dist/cs6261project4/ -p 4200
