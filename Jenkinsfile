@@ -20,13 +20,13 @@ pipeline {
                 sh '$WORKSPACE/node_modules/protractor/bin/webdriver-manager update'
                 sh 'ng e2e --devServerTarget='
             }
-            // post {
-            //     always {
-            //         sh 'docker stop testcontainer || true'
-            //         sh 'docker rm testcontainer || true'
-            //         sh 'docker rmi testimage || true'
-            //     }
-            // }
+            post {
+                always {
+                    sh 'docker stop testcontainer || true'
+                    sh 'docker rm testcontainer || true'
+                    sh 'docker rmi testimage || true'
+                }
+            }
         }
         stage('deploy') {
             steps {
