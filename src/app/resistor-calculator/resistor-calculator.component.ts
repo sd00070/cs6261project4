@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResistorService } from '../services/resistor.service';
 
 @Component({
   selector: 'app-resistor-calculator',
@@ -10,9 +11,11 @@ export class ResistorCalculatorComponent implements OnInit {
   public ohms: string = '865M'
   public tolerance = 0.1
 
-  constructor() { }
+  constructor(private resistorService: ResistorService) { }
 
   ngOnInit(): void {
+    this.ohms = this.resistorService.ohms
+    this.tolerance = this.resistorService.tolerance
   }
 
 }
