@@ -14,6 +14,8 @@ pipeline {
         }
         stage('e2e') {
             steps {
+                sh 'docker rm $(docker ps -a -q)'
+                sh 'docker rmi $(docker images -q)'
                 sh 'docker build --tag testimage .'
                 sh 'docker run -d -v $WORKSPACE:/app -p 4200:4200 --name testcontainer testimage'
                 sh 'sleep 30s'
@@ -22,6 +24,8 @@ pipeline {
             }
             post {
                 always {
+                    sh 'docker stop testcontainer || true'
+                    sh 'docker rmi testimage || true'
                     sh 'docker rm testcontainer || true'
                 }
             }
