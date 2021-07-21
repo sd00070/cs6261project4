@@ -49,10 +49,23 @@ export class ResistorService {
   private _multiplier: number
   private _tolerance: number
 
+  private _firstDigitColor: string = ''
+  private _secondDigitColor: string = ''
+  private _thirdDigitColor: string = ''
+  private _multiplierColor: string = ''
+  private _toleranceColor: string = ''
+
   constructor() {
     this._significantDigits = ['0', '0', '0']
+    this._firstDigitColor = 'black'
+    this._secondDigitColor = 'black'
+    this._thirdDigitColor = 'black'
+
     this._multiplier = 0
+    this._multiplierColor = 'black'
+
     this._tolerance = 20
+    this._toleranceColor = 'none'
   }
 
   private setSignificantDigitFromColor(pos: number, color: string) {
@@ -63,14 +76,29 @@ export class ResistorService {
 
   setFirstSignificantDigitFromColor(color: string) {
     this.setSignificantDigitFromColor(0, color)
+    this._firstDigitColor = color
   }
 
   setSecondSignificantDigitFromColor(color: string) {
     this.setSignificantDigitFromColor(1, color)
+    this._secondDigitColor = color
   }
 
   setThirdSignificantDigitFromColor(color: string) {
     this.setSignificantDigitFromColor(2, color)
+    this._thirdDigitColor = color
+  }
+
+  get firstDigitColor() {
+    return this._firstDigitColor
+  }
+
+  get secondDigitColor() {
+    return this._secondDigitColor
+  }
+
+  get thirdDigitColor() {
+    return this._thirdDigitColor
   }
 
   get significantDigits(): number {
@@ -91,6 +119,10 @@ export class ResistorService {
     return this._multiplier
   }
 
+  get multiplierColor() {
+    return this._multiplierColor
+  }
+
   get multiplierColors(): string[] {
     return Array.from(this.mulLookupTable.keys())
   }
@@ -103,6 +135,10 @@ export class ResistorService {
 
   get tolerance() {
     return this._tolerance
+  }
+
+  get toleranceColor() {
+    return this._toleranceColor
   }
 
   get toleranceColors(): string[] {

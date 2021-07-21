@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { DebugPanelComponent } from './debug-panel/debug-panel.component';
 import { ResistorCalculatorComponent } from './resistor-calculator/resistor-calculator.component';
 
 describe('AppComponent', () => {
@@ -11,7 +12,8 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        ResistorCalculatorComponent
+        ResistorCalculatorComponent,
+        DebugPanelComponent
       ],
     }).compileComponents();
   }));
