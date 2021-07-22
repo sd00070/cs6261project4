@@ -30,7 +30,11 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                echo 'Deploy stage not implemented'
+                sh 'docker stop deploymentcontainer || true'
+                sh 'docker rm deploymentcontainer || true'
+                sh 'docker rmi deploymentimage || true'
+                sh 'docker build --tag deploymentimage .'
+                sh 'docker run -dv $WORKSPACE:/app -p 5000:4200 --name deploymentcontainer deploymentimage'
             }
         }
     }
