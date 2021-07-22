@@ -8,22 +8,7 @@ import { ResistorService } from '../services/resistor.service';
 })
 export class DebugPanelComponent implements OnInit {
 
-  public first = ''
-  public second = ''
-  public third = ''
+  constructor(public resistorService: ResistorService) { }
 
-  public multiplier = ''
-  public tolerance = ''
-
-  constructor(private resistorService: ResistorService) { }
-
-  ngOnInit(): void {
-    this.first = this.resistorService.firstDigitColor
-    this.second = this.resistorService.secondDigitColor
-    this.third = this.resistorService.thirdDigitColor
-
-    this.multiplier = this.resistorService.multiplierColor
-
-    this.tolerance = this.resistorService.toleranceColor
-  }
+  ngOnInit(): void { }
 }

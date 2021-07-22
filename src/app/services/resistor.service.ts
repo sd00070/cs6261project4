@@ -5,17 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class ResistorService {
 
-  private sigDigLookupTable: Map<string, string> = new Map([
-    ['black', '0'],
-    ['brown', '1'],
-    ['red', '2'],
-    ['orange', '3'],
-    ['yellow', '4'],
-    ['green', '5'],
-    ['blue', '6'],
-    ['violet', '7'],
-    ['grey', '8'],
-    ['white', '9']
+  private sigDigLookupTable: Map<string, number> = new Map([
+    ['black', 0],
+    ['brown', 1],
+    ['red', 2],
+    ['orange', 3],
+    ['yellow', 4],
+    ['green', 5],
+    ['blue', 6],
+    ['violet', 7],
+    ['grey', 8],
+    ['white', 9]
   ])
 
   private mulLookupTable: Map<string, number> = new Map([
@@ -45,64 +45,51 @@ export class ResistorService {
     ['none', 20]
   ])
 
-  private _significantDigits: string[]
-  private _multiplier: number
-  private _tolerance: number
-
   private _firstDigitColor: string = ''
   private _secondDigitColor: string = ''
   private _thirdDigitColor: string = ''
+
   private _multiplierColor: string = ''
+
   private _toleranceColor: string = ''
 
   constructor() {
-    this._significantDigits = ['0', '0', '0']
     this._firstDigitColor = 'black'
     this._secondDigitColor = 'black'
     this._thirdDigitColor = 'black'
 
-    this._multiplier = 0
     this._multiplierColor = 'black'
 
-    this._tolerance = 20
     this._toleranceColor = 'none'
   }
 
-  private setSignificantDigitFromColor(pos: number, color: string) {
-    if (!this.sigDigLookupTable.has(color)) throw new Error('Not a valid color')
-
-    this._significantDigits[pos] = this.sigDigLookupTable.get(color)
-  }
-
-  setFirstSignificantDigitFromColor(color: string) {
-    this.setSignificantDigitFromColor(0, color)
+  set firstDigitColor(color: string) {
     this._firstDigitColor = color
   }
-
-  setSecondSignificantDigitFromColor(color: string) {
-    this.setSignificantDigitFromColor(1, color)
-    this._secondDigitColor = color
-  }
-
-  setThirdSignificantDigitFromColor(color: string) {
-    this.setSignificantDigitFromColor(2, color)
-    this._thirdDigitColor = color
-  }
-
   get firstDigitColor() {
     return this._firstDigitColor
   }
 
+  set secondDigitColor(color: string) {
+    this._secondDigitColor = color
+  }
   get secondDigitColor() {
     return this._secondDigitColor
   }
 
+  set thirdDigitColor(color: string) {
+    this._thirdDigitColor = color
+  }
   get thirdDigitColor() {
     return this._thirdDigitColor
   }
 
-  get significantDigits(): number {
-    return Number.parseInt(this._significantDigits.reduce((acc, cur) => acc + cur, ''))
+  private get significantDigits(): number {
+    const firstDigit = this.sigDigLookupTable.get(this._firstDigitColor)
+    const secondDigit = this.sigDigLookupTable.get(this._secondDigitColor)
+    const thirdDigit = this.sigDigLookupTable.get(this._thirdDigitColor)
+
+    return firstDigit * 100 + secondDigit * 10 + thirdDigit
   }
 
   get significantDigitColors(): string[] {
@@ -113,18 +100,12 @@ export class ResistorService {
     return Object.fromEntries(this.sigDigLookupTable)
   }
 
-  setMultiplierFromColor(color: string) {
-    if (!this.mulLookupTable.has(color)) throw new Error('Not a valid color')
-
-    this._multiplier = this.mulLookupTable.get(color)
+  set multiplierColor(color: string) {
+    this._multiplierColor = color
   }
 
   get multiplier() {
-    return this._multiplier
-  }
-
-  get multiplierColor() {
-    return this._multiplierColor
+    return this.mulLookupTable.get(this._multiplierColor)
   }
 
   get multiplierColors(): string[] {
@@ -148,18 +129,12 @@ export class ResistorService {
     }
   }
 
-  setToleranceFromColor(color: string) {
-    if (!this.tolLookupTable.has(color)) throw new Error('Not a valid color')
-
-    this._tolerance = this.tolLookupTable.get(color)
+  set toleranceColor(color: string) {
+    this._toleranceColor = color
   }
 
   get tolerance() {
-    return this._tolerance
-  }
-
-  get toleranceColor() {
-    return this._toleranceColor
+    return this.tolLookupTable.get(this._toleranceColor)
   }
 
   get toleranceColors(): string[] {
