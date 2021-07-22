@@ -64,6 +64,7 @@ export class ResistorService {
   }
 
   set firstDigitColor(color: string) {
+    if (!this.sigDigLookupTable.has(color)) throw new Error('Invalid color')
     this._firstDigitColor = color
   }
   get firstDigitColor() {
@@ -71,6 +72,7 @@ export class ResistorService {
   }
 
   set secondDigitColor(color: string) {
+    if (!this.sigDigLookupTable.has(color)) throw new Error('Invalid color')
     this._secondDigitColor = color
   }
   get secondDigitColor() {
@@ -78,6 +80,7 @@ export class ResistorService {
   }
 
   set thirdDigitColor(color: string) {
+    if (!this.sigDigLookupTable.has(color)) throw new Error('Invalid color')
     this._thirdDigitColor = color
   }
   get thirdDigitColor() {
@@ -101,7 +104,12 @@ export class ResistorService {
   }
 
   set multiplierColor(color: string) {
+    if (!this.mulLookupTable.has(color)) throw new Error('Invalid color')
+
     this._multiplierColor = color
+  }
+  get multiplierColor() {
+    return this._multiplierColor
   }
 
   get multiplier() {
@@ -130,7 +138,12 @@ export class ResistorService {
   }
 
   set toleranceColor(color: string) {
+    if (!this.tolLookupTable.has(color)) throw new Error('Invalid color')
+
     this._toleranceColor = color
+  }
+  get toleranceColor() {
+    return this._toleranceColor
   }
 
   get tolerance() {

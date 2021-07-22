@@ -15,195 +15,132 @@ describe('ResistorService', () => {
     resistorService = service
   }))
 
-  it('should start with significant digits of 0', () => {
-    expect(resistorService.significantDigits).toEqual(0)
+  it('should start with all black significant digits', () => {
+    expect(resistorService.firstDigitColor).toEqual('black')
+
+    expect(resistorService.secondDigitColor).toEqual('black')
+
+    expect(resistorService.thirdDigitColor).toEqual('black')
   })
 
-  it('should start with multiplier of 0', () => {
-    expect(resistorService.multiplier).toEqual(0)
+  it('should set the first significant digit color', () => {
+    resistorService.firstDigitColor = 'green'
+    expect(resistorService.firstDigitColor).toEqual('green')
+  })
+
+  it('should set the second significant digit color', () => {
+    resistorService.secondDigitColor = 'yellow'
+    expect(resistorService.secondDigitColor).toEqual('yellow')
+  })
+
+  it('should set the third significant digit color', () => {
+    resistorService.thirdDigitColor = 'white'
+    expect(resistorService.thirdDigitColor).toEqual('white')
+  })
+
+  it('should throw an error if trying to set significant digit color to invalid color', () => {
+    expect(() => { resistorService.firstDigitColor = 'cyan' }).toThrow(new Error('Invalid color'))
+
+    expect(() => { resistorService.secondDigitColor = 'cyan' }).toThrow(new Error('Invalid color'))
+
+    expect(() => { resistorService.thirdDigitColor = 'cyan' }).toThrow(new Error('Invalid color'))
+  })
+
+  it('should start with multiplier of 1', () => {
+    expect(resistorService.multiplier).toEqual(1)
+  })
+
+  it('should set the multiplier color', () => {
+    resistorService.multiplierColor = 'brown'
+    expect(resistorService.multiplierColor).toEqual('brown')
+  })
+
+  it('should throw an error if trying to set the multiplier color to invalid color', () => {
+    expect(() => { resistorService.multiplierColor = 'cyan' }).toThrow(new Error('Invalid color'))
+  })
+
+  it('should return the correct multiplier value', () => {
+    resistorService.multiplierColor = 'black'
+    expect(resistorService.multiplier).toEqual(1)
+
+    resistorService.multiplierColor = 'brown'
+    expect(resistorService.multiplier).toEqual(10)
+
+    resistorService.multiplierColor = 'red'
+    expect(resistorService.multiplier).toEqual(100)
+
+    resistorService.multiplierColor = 'orange'
+    expect(resistorService.multiplier).toEqual(1000)
+
+    resistorService.multiplierColor = 'yellow'
+    expect(resistorService.multiplier).toEqual(10000)
+
+    resistorService.multiplierColor = 'green'
+    expect(resistorService.multiplier).toEqual(100000)
+
+    resistorService.multiplierColor = 'blue'
+    expect(resistorService.multiplier).toEqual(1000000)
+
+    resistorService.multiplierColor = 'violet'
+    expect(resistorService.multiplier).toEqual(10000000)
+
+    resistorService.multiplierColor = 'grey'
+    expect(resistorService.multiplier).toEqual(100000000)
+
+    resistorService.multiplierColor = 'white'
+    expect(resistorService.multiplier).toEqual(1000000000)
+
+    resistorService.multiplierColor = 'gold'
+    expect(resistorService.multiplier).toEqual(0.1)
+
+    resistorService.multiplierColor = 'silver'
+    expect(resistorService.multiplier).toEqual(0.01)
   })
 
   it('should start with tolerance of 20', () => {
     expect(resistorService.tolerance).toEqual(20)
   })
 
-  it('should start with 0 ohms', () => {
-    expect(resistorService.ohms).toEqual('0')
+  it('should set the tolerance color', () => {
+    resistorService.toleranceColor = 'brown'
+    expect(resistorService.toleranceColor).toEqual('brown')
   })
 
-  it('should set first significant digit', () => {
-    resistorService.setFirstSignificantDigitFromColor('black')
-    expect(resistorService.significantDigits).toEqual(0)
-
-    resistorService.setFirstSignificantDigitFromColor('brown')
-    expect(resistorService.significantDigits).toEqual(100)
-
-    resistorService.setFirstSignificantDigitFromColor('red')
-    expect(resistorService.significantDigits).toEqual(200)
-
-    resistorService.setFirstSignificantDigitFromColor('orange')
-    expect(resistorService.significantDigits).toEqual(300)
-
-    resistorService.setFirstSignificantDigitFromColor('yellow')
-    expect(resistorService.significantDigits).toEqual(400)
-
-    resistorService.setFirstSignificantDigitFromColor('green')
-    expect(resistorService.significantDigits).toEqual(500)
-
-    resistorService.setFirstSignificantDigitFromColor('blue')
-    expect(resistorService.significantDigits).toEqual(600)
-
-    resistorService.setFirstSignificantDigitFromColor('violet')
-    expect(resistorService.significantDigits).toEqual(700)
-
-    resistorService.setFirstSignificantDigitFromColor('grey')
-    expect(resistorService.significantDigits).toEqual(800)
-
-    resistorService.setFirstSignificantDigitFromColor('white')
-    expect(resistorService.significantDigits).toEqual(900)
+  it('should throw an error if trying to set the tolerance color to invalid color', () => {
+    expect(() => { resistorService.toleranceColor = 'black' }).toThrow(new Error('Invalid color'))
   })
 
-  it('should set second significant digit', () => {
-    resistorService.setSecondSignificantDigitFromColor('black')
-    expect(resistorService.significantDigits).toEqual(0)
-
-    resistorService.setSecondSignificantDigitFromColor('brown')
-    expect(resistorService.significantDigits).toEqual(10)
-
-    resistorService.setSecondSignificantDigitFromColor('red')
-    expect(resistorService.significantDigits).toEqual(20)
-
-    resistorService.setSecondSignificantDigitFromColor('orange')
-    expect(resistorService.significantDigits).toEqual(30)
-
-    resistorService.setSecondSignificantDigitFromColor('yellow')
-    expect(resistorService.significantDigits).toEqual(40)
-
-    resistorService.setSecondSignificantDigitFromColor('green')
-    expect(resistorService.significantDigits).toEqual(50)
-
-    resistorService.setSecondSignificantDigitFromColor('blue')
-    expect(resistorService.significantDigits).toEqual(60)
-
-    resistorService.setSecondSignificantDigitFromColor('violet')
-    expect(resistorService.significantDigits).toEqual(70)
-
-    resistorService.setSecondSignificantDigitFromColor('grey')
-    expect(resistorService.significantDigits).toEqual(80)
-
-    resistorService.setSecondSignificantDigitFromColor('white')
-    expect(resistorService.significantDigits).toEqual(90)
-  })
-
-  it('should set third significant digit', () => {
-    resistorService.setThirdSignificantDigitFromColor('black')
-    expect(resistorService.significantDigits).toEqual(0)
-
-    resistorService.setThirdSignificantDigitFromColor('brown')
-    expect(resistorService.significantDigits).toEqual(1)
-
-    resistorService.setThirdSignificantDigitFromColor('red')
-    expect(resistorService.significantDigits).toEqual(2)
-
-    resistorService.setThirdSignificantDigitFromColor('orange')
-    expect(resistorService.significantDigits).toEqual(3)
-
-    resistorService.setThirdSignificantDigitFromColor('yellow')
-    expect(resistorService.significantDigits).toEqual(4)
-
-    resistorService.setThirdSignificantDigitFromColor('green')
-    expect(resistorService.significantDigits).toEqual(5)
-
-    resistorService.setThirdSignificantDigitFromColor('blue')
-    expect(resistorService.significantDigits).toEqual(6)
-
-    resistorService.setThirdSignificantDigitFromColor('violet')
-    expect(resistorService.significantDigits).toEqual(7)
-
-    resistorService.setThirdSignificantDigitFromColor('grey')
-    expect(resistorService.significantDigits).toEqual(8)
-
-    resistorService.setThirdSignificantDigitFromColor('white')
-    expect(resistorService.significantDigits).toEqual(9)
-  })
-
-  it('should set multiplier', () => {
-    resistorService.setMultiplierFromColor('black')
-    expect(resistorService.multiplier).toEqual(1)
-
-    resistorService.setMultiplierFromColor('brown')
-    expect(resistorService.multiplier).toEqual(10)
-
-    resistorService.setMultiplierFromColor('red')
-    expect(resistorService.multiplier).toEqual(100)
-
-    resistorService.setMultiplierFromColor('orange')
-    expect(resistorService.multiplier).toEqual(1000)
-
-    resistorService.setMultiplierFromColor('yellow')
-    expect(resistorService.multiplier).toEqual(10000)
-
-    resistorService.setMultiplierFromColor('green')
-    expect(resistorService.multiplier).toEqual(100000)
-
-    resistorService.setMultiplierFromColor('blue')
-    expect(resistorService.multiplier).toEqual(1000000)
-
-    resistorService.setMultiplierFromColor('violet')
-    expect(resistorService.multiplier).toEqual(10000000)
-
-    resistorService.setMultiplierFromColor('grey')
-    expect(resistorService.multiplier).toEqual(100000000)
-
-    resistorService.setMultiplierFromColor('white')
-    expect(resistorService.multiplier).toEqual(1000000000)
-
-    resistorService.setMultiplierFromColor('gold')
-    expect(resistorService.multiplier).toEqual(0.1)
-
-    resistorService.setMultiplierFromColor('silver')
-    expect(resistorService.multiplier).toEqual(0.01)
-  })
-
-  it('should set the tolerance', () => {
-    resistorService.setToleranceFromColor('brown')
+  it('should return the correct tolerance value', () => {
+    resistorService.toleranceColor = 'brown'
     expect(resistorService.tolerance).toEqual(1)
 
-    resistorService.setToleranceFromColor('red')
+    resistorService.toleranceColor = 'red'
     expect(resistorService.tolerance).toEqual(2)
 
-    resistorService.setToleranceFromColor('green')
+    resistorService.toleranceColor = 'green'
     expect(resistorService.tolerance).toEqual(0.5)
 
-    resistorService.setToleranceFromColor('blue')
+    resistorService.toleranceColor = 'blue'
     expect(resistorService.tolerance).toEqual(0.25)
 
-    resistorService.setToleranceFromColor('violet')
+    resistorService.toleranceColor = 'violet'
     expect(resistorService.tolerance).toEqual(0.1)
 
-    resistorService.setToleranceFromColor('grey')
+    resistorService.toleranceColor = 'grey'
     expect(resistorService.tolerance).toEqual(0.05)
 
-    resistorService.setToleranceFromColor('gold')
+    resistorService.toleranceColor = 'gold'
     expect(resistorService.tolerance).toEqual(5)
 
-    resistorService.setToleranceFromColor('silver')
+    resistorService.toleranceColor = 'silver'
     expect(resistorService.tolerance).toEqual(10)
 
-    resistorService.setToleranceFromColor('none')
+    resistorService.toleranceColor = 'none'
     expect(resistorService.tolerance).toEqual(20)
   })
 
-  it('should throw an error if passed an invalid color', () => {
-    expect(() => { resistorService.setFirstSignificantDigitFromColor('teal') }).toThrow(new Error('Not a valid color'))
-
-    expect(() => { resistorService.setSecondSignificantDigitFromColor('teal') }).toThrow(new Error('Not a valid color'))
-
-    expect(() => { resistorService.setThirdSignificantDigitFromColor('teal') }).toThrow(new Error('Not a valid color'))
-
-    expect(() => { resistorService.setMultiplierFromColor('teal') }).toThrow(new Error('Not a valid color'))
-
-    expect(() => { resistorService.setToleranceFromColor('teal') }).toThrow(new Error('Not a valid color'))
+  it('should start with 0 ohms', () => {
+    expect(resistorService.ohms).toEqual('0')
   })
 
   it('should get the available significant digit colors', () => {
