@@ -37,9 +37,10 @@
           </select>
         </td>
         <td>
-          <select name="tolerance-select" id="tolerance-select">
-            <option *ngFor="let tolerancePair of tolerancesObject | keyvalue" [value]="tolerancePair.value">
-              {{tolerancePair.key}}</option>
+          <select [(ngModel)]="tolerance" (ngModelChange)="updateTolerance($event)" name="tolerance-select"
+            id="tolerance-select">
+            <option *ngFor="let tolerancePair of tolerancesObject | keyvalue" [value]="tolerancePair.key">
+              {{tolerancePair.key}}%</option>
           </select>
         </td>
       </tr>

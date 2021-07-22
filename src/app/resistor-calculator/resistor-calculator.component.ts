@@ -19,7 +19,7 @@ export class ResistorCalculatorComponent implements OnInit {
   public multipliersObject = {}
   public tolerancesObject = {}
 
-  constructor(private resistorService: ResistorService) { }
+  constructor(public resistorService: ResistorService) { }
 
   ngOnInit(): void {
     this.ohms = this.resistorService.ohms
@@ -37,6 +37,11 @@ export class ResistorCalculatorComponent implements OnInit {
   public updateFirst(event) {
     this.firstDigit = event
     this.updateOhms()
+  }
+
+  public updateTolerance(event) {
+    console.log(event)
+    this.resistorService.toleranceColor = 'cyan'
   }
 
   public updateOhms() {

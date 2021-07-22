@@ -143,15 +143,15 @@ export class ResistorService {
 
   get tolerancesObject() {
     return {
-      '1%': 'brown',
-      '2%': 'red',
-      '0.5%': 'green',
-      '0.25%': 'blue',
-      '0.1%': 'violet',
-      '0.05%': 'grey',
-      '5%': 'gold',
-      '10%': 'silver',
-      '20%': 'none',
+      '1': 'brown',
+      '2': 'red',
+      '0.5': 'green',
+      '0.25': 'blue',
+      '0.1': 'violet',
+      '0.05': 'grey',
+      '5': 'gold',
+      '10': 'silver',
+      '20': 'none',
     }
   }
 
