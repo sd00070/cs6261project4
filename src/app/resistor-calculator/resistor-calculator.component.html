@@ -1,12 +1,12 @@
 <section>
-  <h2>Resistance: {{ohms}} +/- {{tolerance}}%</h2>
+  <h2>Resistance: {{resistorService.ohms}} +/-{{resistorService.tolerance}}%</h2>
 
   <p>Select bands</p>
 
   <table>
     <thead>
       <tr>
-        <th>Digits</th>
+        <th>Significant Digits</th>
         <th>Multiplier</th>
         <th>Tolerance</th>
       </tr>
@@ -14,33 +14,32 @@
     <tbody>
       <tr>
         <td>
-          <select [(ngModel)]="firstDigit" (ngModelChange)="updateOhms()" name="first-digit" id="first-digit-select"
+          <select [(ngModel)]="resistorService.firstDigitColor" name="first-digit" id="first-digit-select"
             class="significant-digit">
-            <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
-              {{digitPair.key}}</option>
+            <option *ngFor="let color of resistorService.significantDigitColors" [value]="color">
+              {{color}}</option>
           </select>
-          <select [(ngModel)]="secondDigit" (ngModelChange)="updateOhms()" name="second-digit" id="second-digit-select"
+          <select [(ngModel)]="resistorService.secondDigitColor" name="second-digit" id="second-digit-select"
             class="significant-digit">
-            <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
-              {{digitPair.key}}</option>
+            <option *ngFor="let color of resistorService.significantDigitColors" [value]="color">
+              {{color}}</option>
           </select>
-          <select [(ngModel)]="thirdDigit" (ngModelChange)="updateOhms()" name="third-digit" id="third-digit-select"
+          <select [(ngModel)]="resistorService.thirdDigitColor" name="third-digit" id="third-digit-select"
             class="significant-digit">
-            <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
-              {{digitPair.key}}</option>
+            <option *ngFor="let color of resistorService.significantDigitColors" [value]="color">
+              {{color}}</option>
           </select>
         </td>
         <td>
-          <select name="multiplier-select" id="multiplier-select">
-            <option *ngFor="let multiplierPair of multipliersObject | keyvalue" [value]="multiplierPair.value">
-              {{multiplierPair.key}}</option>
+          <select [(ngModel)]="resistorService.multiplierColor" name="multiplier-select" id="multiplier-select">
+            <option *ngFor="let color of resistorService.multiplierColors" [value]="color">
+              {{color}}</option>
           </select>
         </td>
         <td>
-          <select [(ngModel)]="tolerance" (ngModelChange)="updateTolerance($event)" name="tolerance-select"
-            id="tolerance-select">
-            <option *ngFor="let tolerancePair of tolerancesObject | keyvalue" [value]="tolerancePair.key">
-              {{tolerancePair.key}}%</option>
+          <select [(ngModel)]="resistorService.toleranceColor" name="tolerance-select" id="tolerance-select">
+            <option *ngFor="let color of resistorService.toleranceColors" [value]="color">
+              {{color}}</option>
           </select>
         </td>
       </tr>
