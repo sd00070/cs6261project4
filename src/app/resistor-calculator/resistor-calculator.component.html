@@ -14,15 +14,18 @@
     <tbody>
       <tr>
         <td>
-          <select name="first-digit" id="first-digit-select" class="significant-digit">
+          <select [(ngModel)]="firstDigit" (ngModelChange)="updateOhms()" name="first-digit" id="first-digit-select"
+            class="significant-digit">
             <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
               {{digitPair.key}}</option>
           </select>
-          <select name="second-digit" id="second-digit-select" class="significant-digit">
+          <select [(ngModel)]="secondDigit" (ngModelChange)="updateOhms()" name="second-digit" id="second-digit-select"
+            class="significant-digit">
             <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
               {{digitPair.key}}</option>
           </select>
-          <select name="third-digit" id="third-digit-select" class="significant-digit">
+          <select [(ngModel)]="thirdDigit" (ngModelChange)="updateOhms()" name="third-digit" id="third-digit-select"
+            class="significant-digit">
             <option *ngFor="let digitPair of significantDigitsObject | keyvalue" [value]="digitPair.value">
               {{digitPair.key}}</option>
           </select>

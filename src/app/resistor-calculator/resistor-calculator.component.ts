@@ -11,6 +11,10 @@ export class ResistorCalculatorComponent implements OnInit {
   public ohms: string = '865M'
   public tolerance = 0.1
 
+  public firstDigit = 0
+  public secondDigit = 0
+  public thirdDigit = 0
+
   public significantDigitsObject = {}
   public multipliersObject = {}
   public tolerancesObject = {}
@@ -26,5 +30,16 @@ export class ResistorCalculatorComponent implements OnInit {
     this.multipliersObject = this.resistorService.multipliersObject
 
     this.tolerancesObject = this.resistorService.tolerancesObject
+
+    this.updateOhms()
+  }
+
+  public updateFirst(event) {
+    this.firstDigit = event
+    this.updateOhms()
+  }
+
+  public updateOhms() {
+    this.ohms = `${this.firstDigit}${this.secondDigit}${this.thirdDigit}`
   }
 }
